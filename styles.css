@@ -10,17 +10,34 @@ body {
     overflow-y: auto;
 } */
 
-
+.crypto-list-title {
+    margin-left: 50px;
+}
 
 .card-price {
     margin-left: 300px;
+    margin-top: -80px;
 
 }
 
 .card-volume {
     margin-left: 300px;
+    padding-top: 20px;
 }
 
+.logo-list {
+    width: 50px;
+}
+
+.price-word-hardcode {
+    margin-left: 200px;
+    margin-top: -68px;
+}
+
+.volume-word-hardcode {
+    margin-left: 200px;
+    padding-top: 20px;
+}
 
 
 
@@ -71,7 +88,7 @@ body {
     padding: 0 15px;
     /* margin: 0 auto; */
     margin-left: 50px;
-    margin-top: 250px;
+    margin-top: 335px;
 }
 
 h2 {
