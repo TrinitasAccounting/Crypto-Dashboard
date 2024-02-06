@@ -10,6 +10,43 @@ body {
     overflow-y: auto;
 } */
 
+
+
+
+/* Wallet Div CSS ____________________________________________________________________________ */
+
+.wallet-container {
+    position: absolute;
+    /* max-width: 1000px; */
+    padding: 10px 15px;
+    /* margin: 0 auto; */
+    /* margin-left: 5000px;
+    margin-top: -15200px; */
+    top: 50px;
+    left: 75px;
+    /* width: 700px; */
+    border-style: ridge;
+    text-align: center;
+}
+
+.wallet-amount {
+    font-size: xx-large;
+    padding-top: 20px;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 .crypto-list-title {
     margin-left: 50px;
 }
@@ -194,3 +231,92 @@ h2 {
         grid-column-gap: 40px;
     }
 } */
+
+
+
+
+
+
+
+
+
+
+
+/* Watchlist CSS _______________________________________________________________________________________________________ */
+
+
+
+.watchlist-container {
+    position: absolute;
+    max-width: 1000px;
+    padding: 10px 15px;
+    /* margin: 0 auto; */
+    /* margin-left: 5000px;
+    margin-top: -15200px; */
+    top: 325px;
+    left: 800px;
+    width: 700px;
+    border-style: ridge;
+}
+
+/* h2 {
+    font-size: 32px;
+    margin-bottom: 1em;
+} */
+
+.watchlist-cards {
+    display: grid;
+    /* grid-auto-columns: 100%; */
+    /* 'grid-auto-rows'  this will place the containers as rows instead of columns */
+    grid-auto-rows: 130px;
+    /* height: 500px; */
+    /* grid-column-gap: 10px; */
+    /* grid-row-gap   this sets the gap between each container */
+    grid-row-gap: 10px;
+    /* this is columns or rows below */
+    grid-auto-flow: row;
+    padding: 0px 0px;
+    list-style: none;
+    overflow-x: hidden;
+    overflow-y: auto;
+    scroll-snap-type: y mandatory;
+}
+
+.watchlist-card {
+    /* display: flex; */
+    height: 125px;
+    flex-direction: row;
+    padding: 25px;
+    background: var(--white);
+    border-radius: 12px;
+    scroll-snap-align: start;
+    transition: all 0.2s;
+}
+
+.watchlist-card:hover {
+    color: var(--white);
+    background: var(--orange);
+}
+
+.watchlist-card .watchlist-card-title {
+    font-size: 20px;
+}
+
+.watchlist-card .watchlist-card-content {
+    margin: 20px 0;
+    max-width: 85%;
+}
+
+.watchlist-card .watchlist-card-link-wrapper {
+    margin-top: auto;
+}
+
+.watchlist-card .watchlist-card-link {
+    display: inline-block;
+    text-decoration: none;
+    color: white;
+    background: var(--orange);
+    padding: 6px 12px;
+    border-radius: 8px;
+    transition: background 0.2s;
+}
