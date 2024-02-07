@@ -115,6 +115,20 @@ body {
 
 
 
+/* Selected Watchlist Asset Container and CSS__________________________________________________________________________ */
+
+.selected-asset-container {
+    position: absolute;
+    left: 1300px;
+    top: 50px;
+    border: solid;
+    padding: 10px;
+}
+
+
+.selected-asset-logo {
+    width: 50px;
+}
 
 
 

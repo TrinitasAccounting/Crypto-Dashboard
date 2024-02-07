@@ -3,6 +3,7 @@
 
 //Setting global variables that I can access to filter from_____
 let currentWatchlistCoinsArray = [];
+let currentSelectedAsset = [];
 
 
 
@@ -10,18 +11,19 @@ let currentWatchlistCoinsArray = [];
 
 
 //Wallet Amount - Get Request
-// fetch('http://localhost:3000/wallet')
-//     .then(res => res.json())
-//     .then(data => data.forEach((walletdb) => {
+fetch('http://localhost:3000/wallet')
+    .then(res => res.json())
+    .then(data => data.forEach((walletdb) => {
 
-//         //Adding the wallet value amount
-//         const walletAmountValue = document.querySelector('.wallet-amount');
-//         walletAmountValue.textContent = `$ ${walletdb.wallet_amount}`
+        //Adding the wallet value amount
+        const walletAmountValue = document.querySelector('.wallet-amount');
+        walletAmountValue.textContent = `$ ${walletdb.wallet_amount}`
 
+        currentWalletAmount = walletdb.wallet_amount;
+        // console.log(currentWalletAmount);
 
-//     })
-//     )
-
+    })
+    )
 
 
 //Deposit/Withdraw Form - Event Listeners_________________________________________________________________________________
@@ -30,38 +32,49 @@ let currentWatchlistCoinsArray = [];
 const depositWithdrawSubmitForm = document.querySelector('.main-deposit-form');
 const depositWithdrawInputBox = document.querySelector('.amount-input-box');
 
-//ADD AN EVENT LISTENER TO THIS BOX OR SUBMIT BUTTON__________________________*******************************
-//PATCH is definitely wrong****************
+//ADD AN EVENT LISTENER TO THIS BOX OR SUBMIT BUTTON______________________________________________________________________
 
-// depositWithdrawSubmitForm.addEventListener('submit', (event) => {
-//     event.preventDefault();
-//     const inputAmount = depositWithdrawInputBox.value;
+depositWithdrawSubmitForm.addEventListener('submit', (event) => {
+    event.preventDefault();
 
-//     changeTheWalletAmount(inputAmount);
+    const inputAmount = depositWithdrawInputBox.value;
+    const amountToAddToTheWalletDeposit = Number(inputAmount) + Number(currentWalletAmount);
+    const amountToAddToTheWalletWithdraw = Number(currentWalletAmount) - Number(inputAmount);
 
-// })
+    //Using Radio Buttons to determine if the amount is added or subtracted from the currentWalletAmount_____
+    const radioButtonDeposit = document.querySelector('#deposit');
+    const radioButtonWithdraw = document.querySelector('#withdraw');
+
+    if (!radioButtonDeposit.checked || !radioButtonWithdraw) {
+        alert('Transaction was not processed.\nPlease select "Deposit" or "Withdraw"')
+    }
+    else if (radioButtonDeposit.checked) {
+        changeTheWalletAmount(amountToAddToTheWalletDeposit)
+    }
+    else if (radioButtonWithdraw.checked) {
+        changeTheWalletAmount(amountToAddToTheWalletWithdraw)
+    }
 
 
-
-
-//Adding or Removing from wallet usign PATCH request
-// function changeTheWalletAmount(dollarAmount) {
-//     // fetch('http://localhost:3000/wallet', {
-//     //     method: 'PATCH',
-//     //     headers: {
-//     //         'Content-Type': 'application/json',
-//     //         'Accept': 'applciation/json'
-//     //     },
-//     //     body: JSON.stringify({
-//     //         "wallet_amount": dollarAmount
-//     //     }
-//     //     )
-//     // })
-// };
+})
 
 
 
 
+// Adding or Removing from wallet usign PATCH request
+function changeTheWalletAmount(dollarAmount) {
+    fetch('http://localhost:3000/wallet/1', {
+        method: 'PATCH',
+        headers: {
+            'Content-Type': 'application/json',
+            'Accept': 'applciation/json'
+        },
+        body: JSON.stringify({
+            "wallet_amount": dollarAmount
+        }
+        )
+    })
+};
 
 
 
@@ -71,6 +84,8 @@ const depositWithdrawInputBox = document.querySelector('.amount-input-box');
 
 
 
+//Main Fetch to get all Asset Data___________________________________________________________________________________________
+//___________________________________________________________________________________________________________________________
 
 const mainULElement = document.querySelector('.cards');
 
@@ -141,6 +156,8 @@ fetch('http://localhost:3000/crypto')
 
 
 
+
+
 //Creating the watchlist POST and DELETE _______________________________________________________________________________
 //______________________________________________________________________________________________________________________
 
@@ -204,6 +221,32 @@ function rerenderWatchlistData() {
 
                 //Adding the coin to the watchlist array______________________________________****
                 currentWatchlistCoinsArray.push(watchlistCoin.id);
+
+
+
+
+
+                //Adding a click event listener to the Selected Asset item, that adds to the Selected Item in the top right
+                watchlistDivElement.addEventListener('click', () => {
+
+                    if (currentSelectedAsset.includes(watchlistCoin.name)) {
+
+                    }
+                    else if (currentSelectedAsset.length > 0) {
+                        //need to remove the currently selected and add the new one
+                        const mainSelectedAssetDiv2 = document.querySelector('.selected-asset-container');
+                        mainSelectedAssetDiv2.innerHTML = '';
+
+                        selectingAnAssetToView(watchlistCoin);
+                    }
+                    else {
+                        //need to just add the newly selected item
+                        selectingAnAssetToView(watchlistCoin);
+                    }
+
+                })
+
+
             };
 
 
@@ -255,3 +298,32 @@ function deleteFromTheWatchlist(coinObj) {
 
 
 
+//Selecting an Asset Function
+function selectingAnAssetToView(coin) {
+
+
+    //Finding the top selected Div to attach to 
+    const mainSelectedAssetDiv = document.querySelector('.selected-asset-container');
+
+    //creating and appending the new headers
+    const newSelectedAssetName = document.createElement('h2');
+    newSelectedAssetName.textContent = coin.name;
+    newSelectedAssetName.className = 'selected-asset-name';
+    const newSelectedAssetLogo = document.createElement('img')
+    newSelectedAssetLogo.src = coin.image;
+    newSelectedAssetLogo.className = 'selected-asset-logo';
+    mainSelectedAssetDiv.appendChild(newSelectedAssetLogo);
+    mainSelectedAssetDiv.appendChild(newSelectedAssetName);
+
+    if (currentSelectedAsset.length === 0) {
+        //Removing the other place holder header in the HTML file ******after the first is removed it is finding a null header that its trying to remove
+        const temporarySelectedAssetHeader = document.querySelector('.no-selected-asset');
+        temporarySelectedAssetHeader.remove();
+    }
+    else {
+
+    }
+
+    currentSelectedAsset = coin.name;
+
+};
