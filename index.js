@@ -1,18 +1,66 @@
 
 
-// console.log('Test Test Test');
-
-//Creating the Unordered List for the coins
-// const mainCryptoDashboard = document.getElementById('crypto-dashboard');
-// const newULElement = document.createElement('li');
-// mainCryptoDashboard.appendChild(newULElement);
-
-
-
-
 
 //Setting global variables that I can access to filter from_____
 let currentWatchlistCoinsArray = [];
+
+
+
+
+
+
+//Wallet Amount - Get Request
+fetch('http://localhost:3000/wallet')
+    .then(res => res.json())
+    .then(data => data.forEach((walletdb) => {
+
+        //Adding the wallet value amount
+        const walletAmountValue = document.querySelector('.wallet-amount');
+        walletAmountValue.textContent = `$ ${walletdb.wallet_amount}`
+
+
+    })
+    )
+
+
+
+//Deposit/Withdraw Form - Event Listeners_________________________________________________________________________________
+
+const depositWithdrawInputBox = document.querySelector('.amount-input-box');
+
+// depositWithdrawInputBox.addEventListener('input', () => {
+//     const newConfirmTransactionBtn = document.createElement('button');
+//     newConfirmTransactionBtn.textContent = 'Confirm Transaction';
+
+//     depositWithdrawInputBox.appendChild(newConfirmTransactionBtn);
+
+// })
+
+
+
+//ADD AN EVENT LISTENER TO THIS BOX OR SUBMIT BUTTON__________________________*******************************
+//PATCH is definitely wrong****************
+
+fetch('http://localhost:3000/wallet', {
+    method: 'PATCH',
+    headers: {
+        'Content-Type': 'application/json',
+        'Accept': 'applciation/json'
+    },
+    body: JSON.stringify()
+})
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

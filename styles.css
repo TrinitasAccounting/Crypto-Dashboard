@@ -1,3 +1,14 @@
+:root {
+    --orange: #fd9940;
+    --darkorange: #dd7d25;
+    --platinum: #e5e5e5;
+    --black: #2b2d42;
+    --white: #fff;
+    --thumb: #edf2f4;
+    --navyblue: #1d235f;
+}
+
+
 body {
     /* background-color: red; */
 }
@@ -9,6 +20,12 @@ body {
     overflow-x: hidden;
     overflow-y: auto;
 } */
+
+
+
+
+
+
 
 
 
@@ -40,12 +57,20 @@ body {
 
 
 
+
+
 /* Deposit/Withdraw Container_______________________________________________________________________ */
 
 .deposit-withdraw-container {
     position: absolute;
     left: 500px;
     top: 35px;
+}
+
+.main-deposit-form {
+    position: relative;
+    left: 500px;
+    top: 50px;
 }
 
 
@@ -108,15 +133,6 @@ body {
 
 /* Creating the full Crypto Assets container  */
 
-:root {
-    --orange: #fd9940;
-    --darkorange: #dd7d25;
-    --platinum: #e5e5e5;
-    --black: #2b2d42;
-    --white: #fff;
-    --thumb: #edf2f4;
-    --navyblue: #1d235f;
-}
 
 * {
     box-sizing: border-box;
@@ -131,12 +147,12 @@ body {
     margin: 50px 0;
 }
 
-.container {
+.crypto-container {
     max-width: 500px;
     padding: 0 15px;
     /* margin: 0 auto; */
     margin-left: 50px;
-    margin-top: 335px;
+    margin-top: 200px;
 }
 
 h2 {
