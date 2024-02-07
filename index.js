@@ -10,46 +10,54 @@ let currentWatchlistCoinsArray = [];
 
 
 //Wallet Amount - Get Request
-fetch('http://localhost:3000/wallet')
-    .then(res => res.json())
-    .then(data => data.forEach((walletdb) => {
+// fetch('http://localhost:3000/wallet')
+//     .then(res => res.json())
+//     .then(data => data.forEach((walletdb) => {
 
-        //Adding the wallet value amount
-        const walletAmountValue = document.querySelector('.wallet-amount');
-        walletAmountValue.textContent = `$ ${walletdb.wallet_amount}`
+//         //Adding the wallet value amount
+//         const walletAmountValue = document.querySelector('.wallet-amount');
+//         walletAmountValue.textContent = `$ ${walletdb.wallet_amount}`
 
 
-    })
-    )
+//     })
+//     )
 
 
 
 //Deposit/Withdraw Form - Event Listeners_________________________________________________________________________________
+//________________________________________________________________________________________________________________________
 
+const depositWithdrawSubmitForm = document.querySelector('.main-deposit-form');
 const depositWithdrawInputBox = document.querySelector('.amount-input-box');
 
-// depositWithdrawInputBox.addEventListener('input', () => {
-//     const newConfirmTransactionBtn = document.createElement('button');
-//     newConfirmTransactionBtn.textContent = 'Confirm Transaction';
+//ADD AN EVENT LISTENER TO THIS BOX OR SUBMIT BUTTON__________________________*******************************
+//PATCH is definitely wrong****************
 
-//     depositWithdrawInputBox.appendChild(newConfirmTransactionBtn);
+// depositWithdrawSubmitForm.addEventListener('submit', (event) => {
+//     event.preventDefault();
+//     const inputAmount = depositWithdrawInputBox.value;
+
+//     changeTheWalletAmount(inputAmount);
 
 // })
 
 
 
-//ADD AN EVENT LISTENER TO THIS BOX OR SUBMIT BUTTON__________________________*******************************
-//PATCH is definitely wrong****************
 
-fetch('http://localhost:3000/wallet', {
-    method: 'PATCH',
-    headers: {
-        'Content-Type': 'application/json',
-        'Accept': 'applciation/json'
-    },
-    body: JSON.stringify()
-})
-
+//Adding or Removing from wallet usign PATCH request
+// function changeTheWalletAmount(dollarAmount) {
+//     // fetch('http://localhost:3000/wallet', {
+//     //     method: 'PATCH',
+//     //     headers: {
+//     //         'Content-Type': 'application/json',
+//     //         'Accept': 'applciation/json'
+//     //     },
+//     //     body: JSON.stringify({
+//     //         "wallet_amount": dollarAmount
+//     //     }
+//     //     )
+//     // })
+// };
 
 
 
@@ -191,6 +199,7 @@ function rerenderWatchlistData() {
                 watchlistDivElement.appendChild(watchlistPriceElement);
                 watchlistDivElement.appendChild(watchlistItemDeleteBtn);
                 watchlistDivElement.appendChild(watchlistPriceHardCodedElement);
+                watchlistDivElement.appendChild(watchlistItemDeleteBtn);
 
 
                 //Adding the coin to the watchlist array______________________________________****
@@ -203,7 +212,7 @@ function rerenderWatchlistData() {
 
 rerenderWatchlistData();
 
-console.log(currentWatchlistCoinsArray);
+
 
 
 
