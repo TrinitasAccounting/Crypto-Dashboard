@@ -6,6 +6,7 @@ let currentWatchlistCoinsArray = [];
 let currentSelectedAsset = [];
 let currentSelectedAssetSharesOwned = null;
 let currentlyDisplayedSharesOwnedAsset = 0;
+let currentDisplayedTradingVolumeAsset = null;
 
 
 
@@ -253,14 +254,7 @@ function rerenderWatchlistData() {
 
                 })
 
-
-
-
             };
-            //Making the # of Shares Owned Value populate
-            // numberOfSharesOwned(watchlistCoin);
-
-
         }))
 };
 
@@ -310,6 +304,7 @@ function deleteFromTheWatchlist(coinObj) {
 
 
 //Selecting an Asset Function____________________________________________________________________________________________
+//_______________________________________________________________________________________________________________________
 function selectingAnAssetToView(coin) {
 
 
@@ -337,17 +332,12 @@ function selectingAnAssetToView(coin) {
 
     currentSelectedAsset = coin.name;
     currentSelectedAssetSharesOwned = coin.shares_owned;
+    currentDisplayedTradingVolumeAsset = coin.total_volume;
 
+    //displaying the shares value by calling this function to change the textContent
     displaySelectedAssetSharesOwned(currentSelectedAssetSharesOwned);
-
-    // console.log(currentSelectedAssetSharesOwned);
-
-    // function sharesOwnedDisplayingSelectedAsset() {
-
-    // }
-
-    // removeOldSharesOwnedHeaderElement();
-    // numberOfSharesOwned(coin);
+    //displaying the trading volume for the selected asset 
+    displaySelectedAssetVolume(currentDisplayedTradingVolumeAsset);
 
 
 };
@@ -359,57 +349,22 @@ function selectingAnAssetToView(coin) {
 //Shares Owned Fetch GET Request __________________________________________________________________________________________
 //_________________________________________________________________________________________________________________________
 
-//Fetching and Populating the Shares Owned value when an item is clicked from the watchlist
-// function numberOfSharesOwned(coinObj) {
 
-//     fetch(`http://localhost:3000/watchlist`)
-//         .then(res => res.json())
-//         .then(data => data.forEach((coinObj) => {
-//             if (currentSelectedAsset.includes(coinObj.name)) {
-//             }
-//         }))
-// }
-
-
-// function numberOfSharesOwned(coinObj) {
-
-//     fetch(`http://localhost:3000/watchlist`)
-//         .then(res => res.json())
-//         .then(data => data.forEach(() => {
-
-//         }))
-//             }
-
-
-//test function to do shares owned chart
-
-
+//changing the textContent of the shares owned header 
 function displaySelectedAssetSharesOwned(coinShares) {
 
     const sharesOwnedHeaderElement = document.querySelector('.shares-owned-header');
     sharesOwnedHeaderElement.textContent = coinShares;
 
 }
+//changing the textContent of the trading volume header
+function displaySelectedAssetVolume(coinVolume) {
+    const tradingVolumeHeaderElement = document.querySelector('.trading-volume-display');
+    tradingVolumeHeaderElement.textContent = coinVolume;
+}
 
 
 
-
-
-
-
-//Setting an initial value for the shares owned
-// function totalSharesOwned() {
-// fetch('http://localhost:3000/watchlist')
-//     .then(res => res.json())
-//     .then(data => data.reduce((acc, coinObj) => {
-//         acc = acc + Number(coinObj.shares_owned);
-//         return acc;
-//     }))
-
-
-// }
-
-console.log(currentSelectedAsset);
 
 
 
