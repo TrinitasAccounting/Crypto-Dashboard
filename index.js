@@ -39,23 +39,26 @@ const depositWithdrawInputBox = document.querySelector('.amount-input-box');
 depositWithdrawSubmitForm.addEventListener('submit', (event) => {
     event.preventDefault();
 
+    //Calculating dollar value to add/subtract and rounding it to 2 decimal points
     const inputAmount = depositWithdrawInputBox.value;
     const amountToAddToTheWalletDeposit = Number(inputAmount) + Number(currentWalletAmount);
+    const amountToAddToTheWalletDepositRounded = amountToAddToTheWalletDeposit.toFixed(2);
     const amountToAddToTheWalletWithdraw = Number(currentWalletAmount) - Number(inputAmount);
+    const amountToAddToTheWalletWithdrawRounded = amountToAddToTheWalletWithdraw.toFixed(2);
 
     //Using Radio Buttons to determine if the amount is added or subtracted from the currentWalletAmount_____
     const radioButtonDeposit = document.querySelector('#deposit');
     const radioButtonWithdraw = document.querySelector('#withdraw');
 
-    if (!radioButtonDeposit.checked || !radioButtonWithdraw) {
-        alert('Transaction was not processed.\nPlease select "Deposit" or "Withdraw"')
-    }
-    else if (radioButtonDeposit.checked) {
-        changeTheWalletAmount(amountToAddToTheWalletDeposit)
+    if (radioButtonDeposit.checked) {
+        changeTheWalletAmount(amountToAddToTheWalletDepositRounded)
     }
     else if (radioButtonWithdraw.checked) {
-        changeTheWalletAmount(amountToAddToTheWalletWithdraw)
+        changeTheWalletAmount(amountToAddToTheWalletWithdrawRounded)
     }
+    else {
+        alert('Transaction was not processed.\nPlease select "Deposit" or "Withdraw"')
+    };
 
 
 })
@@ -153,6 +156,8 @@ fetch('http://localhost:3000/crypto')
 
 
     }))
+
+
 
 
 
@@ -266,6 +271,8 @@ rerenderWatchlistData();
 
 
 
+
+
 //POST Function__________________________________________________________________________________________________________
 function addingToTheWatchlistDB(coinObj) {
     fetch('http://localhost:3000/watchlist', {
@@ -302,6 +309,9 @@ function deleteFromTheWatchlist(coinObj) {
         .then(res => res.json())
         .then(data => console.log(data))
 };
+
+
+
 
 
 
@@ -360,6 +370,8 @@ function selectingAnAssetToView(coin) {
 
 
 
+
+
 //Shares Owned Fetch GET Request __________________________________________________________________________________________
 //_________________________________________________________________________________________________________________________
 
@@ -410,47 +422,79 @@ function buyingSellingSharesOfSelectedAsset(currentSelectAsset, coin) {
         // console.log(inputBuySellSharesValue);
 
 
-        //Calculating the share to dollar amount conversion rate*******************************************************************
-        const newSharesBoughtToDollarsSpent = Number(inputBuySellSharesValue) / Number(coin.current_price);
+        //Calculating the share to dollar amount conversion rate for BUY BUY
+        const newSharesBoughtToDollarsSpentRatio = Number(inputBuySellSharesValue) / Number(coin.current_price);
         console.log(currentSelectAsset.current_price);
 
-        const newSharesOwnedTotalValue = Number(newSharesBoughtToDollarsSpent) + Number(currentSelectedAssetSharesOwned);
+        const newSharesOwnedTotalValueForBuy = Number(newSharesBoughtToDollarsSpentRatio) + Number(currentSelectedAssetSharesOwned);
 
-        //Temporary logs
-        console.log(currentSelectedAsset.id);
+        //Calculating the share to dollar amount conversion rate for SELL SELL
+        const newSharesOwnedTotalValueForSell = Number(currentSelectedAssetSharesOwned) - Number(newSharesBoughtToDollarsSpentRatio);
+
 
         //if it was the BUY or Sell button that was clicked, && if there is no watchlist asset selected then do nothing
         if (currentSelectedAsset.length === 0) {
             alert('Please select a Crypto Asset to BUY or SELL');
         }
         else if (event.submitter.className === 'button-buy') {
-            //PATCH to shares_owned for current coin
-            fetch(`http://localhost:3000/watchlist/${currentSelectedAsset}`, {
-                method: 'PATCH',
-                headers: {
-                    'Content-Type': 'application/json',
-                    'Accept': 'application/json'
-                },
-                body: JSON.stringify({
-                    shares_owned: newSharesOwnedTotalValue
+
+            //limiting someone from buying more shares than they have dollars in their wallet
+            if (Number(inputBuySellSharesValue) > currentWalletAmount) {
+                alert('no can do poor man');
+            }
+            else {
+
+                //PATCH to shares_owned for current coin BUY
+                fetch(`http://localhost:3000/watchlist/${currentSelectedAsset}`, {
+                    method: 'PATCH',
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'Accept': 'application/json'
+                    },
+                    body: JSON.stringify({
+                        shares_owned: newSharesOwnedTotalValueForBuy
+                    })
+                    // .then(res => res.json())
+                    // .then(data => console.log(data))
                 })
-                // .then(res => res.json())
-                // .then(data => console.log(data))
-            })
 
-            //PATCH to wallet ammount using already defined function
-            //how much to subtract from wallet????
-            // const dollarAmountToSubtractBecauseOfBuyingShares =
+                //PATCH to wallet ammount using already defined function
+                const dollarAmountChange = Number((inputBuySellSharesValue * -1)) + Number(currentWalletAmount);
+                changeTheWalletAmount(Number(dollarAmountChange));
 
-            // changeTheWalletAmount(dollarAmount)
+
+            }
 
         }
         else if (event.submitter.className === 'button-sell') {
 
+            //limiting selling more shares than one owns currently
+            if (Number(newSharesBoughtToDollarsSpentRatio) > Number(currentSelectedAssetSharesOwned)) {
+                alert('No can do poor man');
+            }
+            else {
+
+
+                //PATCH to shares_owned for current coin SELL
+                fetch(`http://localhost:3000/watchlist/${currentSelectedAsset}`, {
+                    method: 'PATCH',
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'Accept': 'application/json'
+                    },
+                    body: JSON.stringify({
+                        shares_owned: newSharesOwnedTotalValueForSell
+                    })
+                })
+
+                //PATCH to wallet ammount using already defined function
+                const dollarAmountChange = Number(currentWalletAmount) + Number(inputBuySellSharesValue);
+                changeTheWalletAmount(Number(dollarAmountChange));
+
+            }
+
         }
-
     })
-
 };
 
 
