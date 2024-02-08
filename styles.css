@@ -115,19 +115,143 @@ body {
 
 
 
-/* Selected Watchlist Asset Container and CSS__________________________________________________________________________ */
+/* Selected Watchlist Asset Container and CSS (Top Right Corner)___________________________________________________________________ */
 
 .selected-asset-container {
     position: absolute;
-    left: 1300px;
-    top: 50px;
+    left: 1600px;
+    top: 40px;
     /* border: solid; */
     padding: 10px;
 }
 
 
 .selected-asset-logo {
-    width: 50px;
+    width: 80px;
+}
+
+.selected-asset-name {
+    font-size: 40px;
+}
+
+
+
+
+/* Buy and Sell Buttons CSS____________________________________________________________________________________ */
+.button-buy {
+    align-items: center;
+    appearance: none;
+    background-image: radial-gradient(100% 100% at 100% 0, #35de35 0, #2ba425 100%);
+    border: 0;
+    border-radius: 6px;
+    box-shadow: rgba(45, 35, 66, .4) 0 2px 4px, rgba(45, 35, 66, .3) 0 7px 13px -3px, rgba(58, 65, 111, .5) 0 -3px 0 inset;
+    box-sizing: border-box;
+    color: #fff;
+    cursor: pointer;
+    display: inline-flex;
+    font-family: "JetBrains Mono", monospace;
+    height: 48px;
+    width: 150px;
+    justify-content: center;
+    line-height: 1;
+    list-style: none;
+    overflow: hidden;
+    padding-left: 16px;
+    padding-right: 16px;
+    position: relative;
+    text-align: left;
+    text-decoration: none;
+    transition: box-shadow .15s, transform .15s;
+    user-select: none;
+    -webkit-user-select: none;
+    touch-action: manipulation;
+    white-space: nowrap;
+    will-change: box-shadow, transform;
+    font-size: 18px;
+    position: absolute;
+    top: 100px;
+    left: 1100px;
+}
+
+.button-sell {
+    align-items: center;
+    appearance: none;
+    background-image: radial-gradient(100% 100% at 100% 0, #ff5a5a 0, #b81919 100%);
+    border: 0;
+    border-radius: 6px;
+    box-shadow: rgba(45, 35, 66, .4) 0 2px 4px, rgba(45, 35, 66, .3) 0 7px 13px -3px, rgba(58, 65, 111, .5) 0 -3px 0 inset;
+    box-sizing: border-box;
+    color: #fff;
+    cursor: pointer;
+    display: inline-flex;
+    font-family: "JetBrains Mono", monospace;
+    height: 48px;
+    width: 150px;
+    justify-content: center;
+    line-height: 1;
+    list-style: none;
+    overflow: hidden;
+    padding-left: 16px;
+    padding-right: 16px;
+    position: relative;
+    text-align: left;
+    text-decoration: none;
+    transition: box-shadow .15s, transform .15s;
+    user-select: none;
+    -webkit-user-select: none;
+    touch-action: manipulation;
+    white-space: nowrap;
+    will-change: box-shadow, transform;
+    font-size: 18px;
+    position: absolute;
+    top: 100px;
+    left: 1320px;
+}
+
+.button-buy:focus {
+    box-shadow: #23841e 0 0 0 1.5px inset, rgba(45, 35, 66, .4) 0 2px 4px, rgba(45, 35, 66, .3) 0 7px 13px -3px, #3c4fe0 0 -3px 0 inset;
+}
+
+.button-sell:focus {
+    box-shadow: #9c1515 0 0 0 1.5px inset, rgba(45, 35, 66, .4) 0 2px 4px, rgba(45, 35, 66, .3) 0 7px 13px -3px, #3c4fe0 0 -3px 0 inset;
+}
+
+.button-buy:hover {
+    box-shadow: rgba(36, 66, 35, 0.4) 0 4px 8px, rgba(45, 35, 66, .3) 0 7px 13px -3px, #3c4fe0 0 -3px 0 inset;
+    transform: translateY(-2px);
+}
+
+.button-sell:hover {
+    box-shadow: rgba(66, 35, 35, 0.4) 0 4px 8px, rgba(45, 35, 66, .3) 0 7px 13px -3px, #3c4fe0 0 -3px 0 inset;
+    transform: translateY(-2px);
+}
+
+.button-buy:active {
+    box-shadow: #44e03c 0 3px 7px inset;
+    transform: translateY(2px);
+}
+
+.button-sell:active {
+    box-shadow: #e03c3c 0 3px 7px inset;
+    transform: translateY(2px);
+}
+
+
+
+/* Buy/Sell Input Amount Box__________________________________________________________________________________ */
+.input-buysell {
+    position: absolute;
+    left: 1190px;
+    top: 180px;
+    height: 50px;
+    width: 200px;
+}
+
+.dollar-label-buysell {
+    position: absolute;
+    left: 1165px;
+    top: 195px;
+    font-size: 30px;
 }
 
 
@@ -138,14 +262,7 @@ body {
 
 
 
-
-
-
-
-
-
-
-/* Creating the full Crypto Assets container  */
+/* Creating the full Crypto Assets container  __________________________________________________________________*/
 
 
 * {

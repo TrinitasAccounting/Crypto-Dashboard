@@ -4,8 +4,9 @@
 //Setting global variables that I can access to filter from_____
 let currentWatchlistCoinsArray = [];
 let currentSelectedAsset = [];
+let currentSelectedAssetFullCoin = [];
 let currentSelectedAssetSharesOwned = null;
-let currentlyDisplayedSharesOwnedAsset = 0;
+// let currentlyDisplayedSharesOwnedAsset = 0;
 let currentDisplayedTradingVolumeAsset = null;
 
 
@@ -237,7 +238,7 @@ function rerenderWatchlistData() {
                 //Adding a click event listener to the Selected Asset item, that adds to the Selected Item in the top right
                 watchlistDivElement.addEventListener('click', () => {
 
-                    if (currentSelectedAsset.includes(watchlistCoin.name)) {
+                    if (currentSelectedAsset.includes(watchlistCoin.id)) {   //changed from watchlistCoin.name
 
                     }
                     else if (currentSelectedAsset.length > 0) {
@@ -252,6 +253,8 @@ function rerenderWatchlistData() {
                         selectingAnAssetToView(watchlistCoin);
                     }
 
+                    // currentSelectedAsset2 = [...currentSelectedAsset];
+                    // console.log(currentSelectedAsset2);
                 })
 
             };
@@ -259,7 +262,6 @@ function rerenderWatchlistData() {
 };
 
 rerenderWatchlistData();
-
 
 
 
@@ -303,8 +305,13 @@ function deleteFromTheWatchlist(coinObj) {
 
 
 
-//Selecting an Asset Function____________________________________________________________________________________________
+
+
+//Selecting an Asset Function (Top Right of Screen)______________________________________________________________________
 //_______________________________________________________________________________________________________________________
+
+// let test = null;
+
 function selectingAnAssetToView(coin) {
 
 
@@ -330,17 +337,24 @@ function selectingAnAssetToView(coin) {
 
     }
 
-    currentSelectedAsset = coin.name;
+    currentSelectedAsset = coin.id;
+    currentSelectedAssetFullCoin = coin;
     currentSelectedAssetSharesOwned = coin.shares_owned;
     currentDisplayedTradingVolumeAsset = coin.total_volume;
+
+
+    //this is giving the BUY and SELL shares buttons there functionality because the currentSelectedAsset is losing its value everytime due to rerending
+    buyingSellingSharesOfSelectedAsset(currentSelectedAsset, coin);//************************************************************************** */
+
+
 
     //displaying the shares value by calling this function to change the textContent
     displaySelectedAssetSharesOwned(currentSelectedAssetSharesOwned);
     //displaying the trading volume for the selected asset 
     displaySelectedAssetVolume(currentDisplayedTradingVolumeAsset);
-
-
 };
+
+
 
 
 
@@ -370,6 +384,74 @@ function displaySelectedAssetVolume(coinVolume) {
 
 
 
+//Buy and Sell Buttons functional event listeners______________________________________________________________________
+//_____________________________________________________________________________________________________________________
+
+
+//Hoping that I can put this into a function and access it inside of where I defined the currentSelectedAsset value because it rerenders everytime that is called
+
+function buyingSellingSharesOfSelectedAsset(currentSelectAsset, coin) {
+    //grabbing the input box
+    const inputBuySellShares = document.querySelector('.input-buysell');
+
+    //grabbing the form itself
+    const inputBuySellSharesForm = document.querySelector('.input-buy-sell-form');
+
+    //grabbing the Buy/Sell buttons
+    const buySharesButton = document.querySelector('.button-buy');
+    const sellSharesButton = document.querySelector('.button-sell');
+
+    //adding event listener to the BUY button
+    inputBuySellSharesForm.addEventListener('submit', (event) => {
+        event.preventDefault();
+
+        //input box with the actual value
+        const inputBuySellSharesValue = inputBuySellShares.value;
+        // console.log(inputBuySellSharesValue);
+
+
+        //Calculating the share to dollar amount conversion rate*******************************************************************
+        const newSharesBoughtToDollarsSpent = Number(inputBuySellSharesValue) / Number(coin.current_price);
+        console.log(currentSelectAsset.current_price);
+
+        const newSharesOwnedTotalValue = Number(newSharesBoughtToDollarsSpent) + Number(currentSelectedAssetSharesOwned);
+
+        //Temporary logs
+        console.log(currentSelectedAsset.id);
+
+        //if it was the BUY or Sell button that was clicked, && if there is no watchlist asset selected then do nothing
+        if (currentSelectedAsset.length === 0) {
+            alert('Please select a Crypto Asset to BUY or SELL');
+        }
+        else if (event.submitter.className === 'button-buy') {
+            //PATCH to shares_owned for current coin
+            fetch(`http://localhost:3000/watchlist/${currentSelectedAsset}`, {
+                method: 'PATCH',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'Accept': 'application/json'
+                },
+                body: JSON.stringify({
+                    shares_owned: newSharesOwnedTotalValue
+                })
+                // .then(res => res.json())
+                // .then(data => console.log(data))
+            })
+
+            //PATCH to wallet ammount using already defined function
+            //how much to subtract from wallet????
+            // const dollarAmountToSubtractBecauseOfBuyingShares =
+
+            // changeTheWalletAmount(dollarAmount)
+
+        }
+        else if (event.submitter.className === 'button-sell') {
+
+        }
+
+    })
+
+};
 
 
 
@@ -377,29 +459,6 @@ function displaySelectedAssetVolume(coinVolume) {
 
 
 
-//This is the function that removes the previously attached header for the shares owned
-// function removeOldSharesOwnedHeaderElement() {
-//     const sharesOwnedOldHeader = document.querySelector('.header-shares-owned-value');
-//     sharesOwnedOldHeader.remove();
-
-// }
-// removeOldSharesOwnedHeaderElement();
 
 
-// function toAddTemporaryShares(coin) {
-//     fetch('http://localhost:3000/crypto', {
-//         method: 'PATCH',
-//         headers: {
-//             'COntent-Type': 'application/json',
-//             'Accept': 'application/json'
-//         },
-//         body: JSON.stringify({
-//             coin[shares_owned]: 0
-//         })
-//     })
-//         .then(res => res.json())
-//         .then(data => console.log(data))
-// }
 
-
-// toAddTemporaryShares()
