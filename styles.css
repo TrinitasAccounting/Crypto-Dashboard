@@ -121,7 +121,7 @@ body {
     position: absolute;
     left: 1300px;
     top: 50px;
-    border: solid;
+    /* border: solid; */
     padding: 10px;
 }
 
@@ -406,4 +406,26 @@ h2 {
     top: -96px;
     left: 320px;
     font-size: 18px;
+}
+
+
+
+
+
+
+
+
+/* Shares Owned && Daily Trading Volume containers___________________________ */
+
+.shares-owned-container {
+    position: absolute;
+    top: 450px;
+    left: 1650px;
+}
+
+
+.daily-trading-volume-container {
+    position: absolute;
+    top: 650px;
+    left: 1650px;
 }

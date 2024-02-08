@@ -4,8 +4,8 @@
 //Setting global variables that I can access to filter from_____
 let currentWatchlistCoinsArray = [];
 let currentSelectedAsset = [];
-
-
+let currentSelectedAssetSharesOwned = null;
+let currentlyDisplayedSharesOwnedAsset = 0;
 
 
 
@@ -204,9 +204,16 @@ function rerenderWatchlistData() {
                 const watchlistItemDeleteBtn = document.createElement('button');
                 watchlistItemDeleteBtn.textContent = 'X';
                 watchlistItemDeleteBtn.className = 'watchlist-delete-button';
-                //Delete button click listener to DELETE request and to remove from global array
+
+                //Delete button click listener to DELETE request and to remove from global array. 
                 watchlistItemDeleteBtn.addEventListener('click', () => {
-                    deleteFromTheWatchlist(watchlistCoin)
+                    //restricts removal of an asset from the watchlist if outstanding shares are still owned
+                    if (watchlistCoin.shares_owned === 0) {
+                        deleteFromTheWatchlist(watchlistCoin)
+                    }
+                    else {
+                        alert('Due to financial regulations, any asset in which you own shares.\nThese owned assets cannot be removed from the watchlist.\nPlease sell all shares and try again!')
+                    }
                 })
 
 
@@ -247,7 +254,11 @@ function rerenderWatchlistData() {
                 })
 
 
+
+
             };
+            //Making the # of Shares Owned Value populate
+            // numberOfSharesOwned(watchlistCoin);
 
 
         }))
@@ -259,7 +270,7 @@ rerenderWatchlistData();
 
 
 
-//POST Function
+//POST Function__________________________________________________________________________________________________________
 function addingToTheWatchlistDB(coinObj) {
     fetch('http://localhost:3000/watchlist', {
         method: 'POST',
@@ -283,7 +294,7 @@ function addingToTheWatchlistDB(coinObj) {
 };
 
 
-//DELETE Request Function 
+//DELETE Request Function ________________________________________________________________________________________________
 function deleteFromTheWatchlist(coinObj) {
     fetch(`http://localhost:3000/watchlist/${coinObj.id}`, {
         method: 'DELETE',
@@ -298,7 +309,7 @@ function deleteFromTheWatchlist(coinObj) {
 
 
 
-//Selecting an Asset Function
+//Selecting an Asset Function____________________________________________________________________________________________
 function selectingAnAssetToView(coin) {
 
 
@@ -325,5 +336,115 @@ function selectingAnAssetToView(coin) {
     }
 
     currentSelectedAsset = coin.name;
+    currentSelectedAssetSharesOwned = coin.shares_owned;
+
+    displaySelectedAssetSharesOwned(currentSelectedAssetSharesOwned);
+
+    // console.log(currentSelectedAssetSharesOwned);
+
+    // function sharesOwnedDisplayingSelectedAsset() {
+
+    // }
+
+    // removeOldSharesOwnedHeaderElement();
+    // numberOfSharesOwned(coin);
+
 
 };
+
+
+
+
+
+//Shares Owned Fetch GET Request __________________________________________________________________________________________
+//_________________________________________________________________________________________________________________________
+
+//Fetching and Populating the Shares Owned value when an item is clicked from the watchlist
+// function numberOfSharesOwned(coinObj) {
+
+//     fetch(`http://localhost:3000/watchlist`)
+//         .then(res => res.json())
+//         .then(data => data.forEach((coinObj) => {
+//             if (currentSelectedAsset.includes(coinObj.name)) {
+//             }
+//         }))
+// }
+
+
+// function numberOfSharesOwned(coinObj) {
+
+//     fetch(`http://localhost:3000/watchlist`)
+//         .then(res => res.json())
+//         .then(data => data.forEach(() => {
+
+//         }))
+//             }
+
+
+//test function to do shares owned chart
+
+
+function displaySelectedAssetSharesOwned(coinShares) {
+
+    const sharesOwnedHeaderElement = document.querySelector('.shares-owned-header');
+    sharesOwnedHeaderElement.textContent = coinShares;
+
+}
+
+
+
+
+
+
+
+//Setting an initial value for the shares owned
+// function totalSharesOwned() {
+// fetch('http://localhost:3000/watchlist')
+//     .then(res => res.json())
+//     .then(data => data.reduce((acc, coinObj) => {
+//         acc = acc + Number(coinObj.shares_owned);
+//         return acc;
+//     }))
+
+
+// }
+
+console.log(currentSelectedAsset);
+
+
+
+
+
+
+
+
+
+
+
+
+//This is the function that removes the previously attached header for the shares owned
+// function removeOldSharesOwnedHeaderElement() {
+//     const sharesOwnedOldHeader = document.querySelector('.header-shares-owned-value');
+//     sharesOwnedOldHeader.remove();
+
+// }
+// removeOldSharesOwnedHeaderElement();
+
+
+// function toAddTemporaryShares(coin) {
+//     fetch('http://localhost:3000/crypto', {
+//         method: 'PATCH',
+//         headers: {
+//             'COntent-Type': 'application/json',
+//             'Accept': 'application/json'
+//         },
+//         body: JSON.stringify({
+//             coin[shares_owned]: 0
+//         })
+//     })
+//         .then(res => res.json())
+//         .then(data => console.log(data))
+// }
+
+
+// toAddTemporaryShares()
