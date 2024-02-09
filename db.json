@@ -2883,26 +2883,6 @@
   ],
   "watchlist": [
     {
-      "id": "ethereum",
-      "symbol": "eth",
-      "name": "Ethereum",
-      "image": "https://assets.coingecko.com/coins/images/279/large/ethereum.png?1696501628",
-      "current_price": 2366.55,
-      "market_cap": 284356063353,
-      "total_volume": 9492576015,
-      "shares_owned": 0.0213389026219602
-    },
-    {
-      "id": "binancecoin",
-      "symbol": "bnb",
-      "name": "BNB",
-      "image": "https://assets.coingecko.com/coins/images/825/large/bnb-icon2_2x.png?1696501970",
-      "current_price": 303.62,
-      "market_cap": 46675753905,
-      "total_volume": 450657116,
-      "shares_owned": 1.330610631710691
-    },
-    {
       "id": "ripple",
       "symbol": "xrp",
       "name": "XRP",
@@ -2910,13 +2890,63 @@
       "current_price": 0.503207,
       "market_cap": 27357075005,
       "total_volume": 848930470,
+      "shares_owned": 198.72537544191556
+    },
+    {
+      "id": "ethereum",
+      "symbol": "eth",
+      "name": "Ethereum",
+      "image": "https://assets.coingecko.com/coins/images/279/large/ethereum.png?1696501628",
+      "current_price": 2366.55,
+      "market_cap": 284356063353,
+      "total_volume": 9492576015,
+      "shares_owned": 0.042255604149500324
+    },
+    {
+      "id": "matic-network",
+      "symbol": "matic",
+      "name": "Polygon",
+      "image": "https://assets.coingecko.com/coins/images/4713/large/polygon.png?1698233745",
+      "current_price": 0.80301,
+      "market_cap": 7444841330,
+      "total_volume": 291421895,
       "shares_owned": 0
+    },
+    {
+      "id": "the-open-network",
+      "symbol": "ton",
+      "name": "Toncoin",
+      "image": "https://assets.coingecko.com/coins/images/17980/large/ton_symbol.png?1696517498",
+      "current_price": 2.04,
+      "market_cap": 7061619088,
+      "total_volume": 14970759,
+      "shares_owned": 0
+    },
+    {
+      "id": "cosmos",
+      "symbol": "atom",
+      "name": "Cosmos Hub",
+      "image": "https://assets.coingecko.com/coins/images/1481/large/cosmos_hub.png?1696502525",
+      "current_price": 9.36,
+      "market_cap": 3588996500,
+      "total_volume": 140436009,
+      "shares_owned": 0
+    },
+    {
+      "id": "bitcoin-cash",
+      "symbol": "bch",
+      "name": "Bitcoin Cash",
+      "image": "https://assets.coingecko.com/coins/images/780/large/bitcoin-cash-circle.png?1696501932",
+      "current_price": 235.52,
+      "market_cap": 4620008315,
+      "total_volume": 120097535,
+      "shares_owned": 0.2122961956521739
     }
   ],
   "wallet": [
     {
       "id": "1",
-      "wallet_amount": 850.47,
+      "wallet_amount": 1759.92,
       "can_withdraw": true
     }
   ]

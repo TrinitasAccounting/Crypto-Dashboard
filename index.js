@@ -257,10 +257,60 @@ function rerenderWatchlistData() {
                         //need to just add the newly selected item
                         selectingAnAssetToView(watchlistCoin);
                     }
-
-                    // currentSelectedAsset2 = [...currentSelectedAsset];
-                    // console.log(currentSelectedAsset2);
                 })
+
+
+
+
+
+                //creating the Sell All Hover button_______________________________________________-
+                const sellAllSharesButtonOnHover = document.createElement('button');
+                sellAllSharesButtonOnHover.className = 'sell-all-button-not-hovering';
+                sellAllSharesButtonOnHover.textContent = 'Sell All Shares';
+
+                //adding the event listener to the button
+                sellAllSharesButtonOnHover.addEventListener('click', () => {
+
+                    //PATCH to shares_owned for current coin SELL ALL
+                    fetch(`http://localhost:3000/watchlist/${watchlistCoin.id}`, {
+                        method: 'PATCH',
+                        headers: {
+                            'Content-Type': 'application/json',
+                            'Accept': 'application/json'
+                        },
+                        body: JSON.stringify({
+                            shares_owned: 0
+                        })
+                    })
+
+                    //PATCH to wallet ammount (adding the shares owned * share price value to the currentWallet Amount)
+
+                    const dollarAmountChangeOnSellAll = Number(currentWalletAmount) + (Number(watchlistCoin.current_price) * Number(watchlistCoin.shares_owned));
+                    changeTheWalletAmount(Number(dollarAmountChangeOnSellAll.toFixed(2)));
+
+                })
+
+
+
+                watchlistDivElement.appendChild(sellAllSharesButtonOnHover);
+
+                //Event Listener for hovering to show sell all shares (changes the className and CSS: display: 'none' changes) 
+                watchlistDivElement.addEventListener('mouseover', () => {
+                    // console.log(watchlistCoin.shares_owned);
+                    if (watchlistCoin.shares_owned > 0) {
+                        sellAllSharesButtonOnHover.className = 'sell-all-button-hovering';
+
+
+                    }
+                })
+
+                //Event listener for when mouse stops hovering over the element
+                watchlistDivElement.addEventListener('mouseout', () => {
+                    sellAllSharesButtonOnHover.className = 'sell-all-button-not-hovering';
+                })
+
+
+
 
             };
         }))
@@ -396,6 +446,8 @@ function displaySelectedAssetVolume(coinVolume) {
 
 
 
+
+
 //Buy and Sell Buttons functional event listeners______________________________________________________________________
 //_____________________________________________________________________________________________________________________
 
@@ -460,7 +512,7 @@ function buyingSellingSharesOfSelectedAsset(currentSelectAsset, coin) {
 
                 //PATCH to wallet ammount using already defined function
                 const dollarAmountChange = Number((inputBuySellSharesValue * -1)) + Number(currentWalletAmount);
-                changeTheWalletAmount(Number(dollarAmountChange));
+                changeTheWalletAmount(Number(dollarAmountChange.toFixed(2)));
 
 
             }
@@ -489,11 +541,31 @@ function buyingSellingSharesOfSelectedAsset(currentSelectAsset, coin) {
 
                 //PATCH to wallet ammount using already defined function
                 const dollarAmountChange = Number(currentWalletAmount) + Number(inputBuySellSharesValue);
-                changeTheWalletAmount(Number(dollarAmountChange));
+                changeTheWalletAmount(Number(dollarAmountChange.toFixed(2)));
 
             }
 
         }
+
+
+        //Building an onmousehover event listener to show "Sell All Shares"
+        // const sellButtonHoverDiv = document.querySelector('.sell-button-hover-div');
+        // const testButton = document.querySelector('.button-sell');
+
+        // testButton.addEventListener('onmouseover', () => {
+        //     console.log('correct hover');
+
+        //     document.querySelector('.temporary-hovered').textContent = 'Hovered'
+
+        //     const newDivOnHover = document.createElement('div');
+        //     sellButtonHoverDiv.appendChild(newDivOnHover);
+        //     const newSellAllButtonOnHover = document.createElement('button');
+        //     newDivOnHover.appendChild(newSellAllButtonOnHover);
+
+
+        // })
+
+
     })
 };
 

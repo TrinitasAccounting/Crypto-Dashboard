@@ -528,6 +528,34 @@ h2 {
 
 
 
+/* Sell All Button that changes per Hover with the mouse */
+.sell-all-button-hovering {
+    position: relative;
+    top: -147px;
+    left: 540px;
+    background-color: #b81919;
+    height: 35px;
+    width: 70px;
+    display: flexbox;
+    border-radius: 10px;
+}
+
+
+.sell-all-button-not-hovering {
+    position: relative;
+    top: -80px;
+    left: 100px;
+    background-color: #b81919;
+    height: 35px;
+    width: 70px;
+    display: none;
+    border-radius: 10px;
+}
+
+
+
+
+
 
 
 
