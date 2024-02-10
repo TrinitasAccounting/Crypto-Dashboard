@@ -4,7 +4,7 @@
         <link rel="stylesheet" type="text/css" href="styles.css" />
         <script defer type='text/javascript' src="index.js" ></script>
     </head>
-    <body>
+    <body class="full-body">
         <!-- <div id="crypto=dashboard-div" class="">
             <h1 id="crypto-dashboard">Crypto Dashboard</h1> 
         </div> -->
@@ -18,19 +18,22 @@
 
         
         <!-- Deposit/Withdraw Form _______________________________________________________________________________ -->
-        <div>
+        <div class="deposit-withdraw-div-container">
           <form class="main-deposit-form">
-            <label for="deposit">Deposit</label>
-            <input type="radio" id="deposit" name="deposit/withdraw"><br>
-            <label for="withdraw">Withdraw</label>
-            <input type="radio" id="withdraw" name="deposit/withdraw"><br>
-            <label for="amount">Amount:</label>
-            <label for="amount">$</label>
+            <div class="radio-toolbar">
+              <label for="deposit" class="deposit-label">Deposit</label>
+              <input type="radio" id="deposit" name="deposit/withdraw" value="deposit"><br>
+              <label for="withdraw" class="withdraw-label">Withdraw</label>
+              <input type="radio" id="withdraw" name="deposit/withdraw" value="withdraw"><br>
+            </div>
+            <label for="amount" class="amount-wording-form">Amount:</label>
+            <label for="amount" class="amount-symbol-form">$</label>
             <input type="text" name="amount" value="" class="amount-input-box"><br>
             <input type="submit" value="Confirm Transaction" class="confirm-dw-button">
           </form>
         </div>
         
+
 
 
         <!-- Buy/Sell Buttons && Amount of Shares or Dollar Amount Input -->
@@ -47,20 +50,24 @@
         <div class="sell-button-hover-div">
         </div>
         
+
+
+
         <!-- Currently Selected Crypto Container -->
         <div class="selected-asset-container">
           <h2 class="no-selected-asset">Select an Asset</h2>
         </div>
         
         
+
         <!-- Shares Owned && Daily Trading Volume Elements____________________________________________________________ -->
         <div class="shares-owned-container">
-          <h5>Shares Owned</h5>
+          <h5 class="shares-owned-title">Shares Owned</h5>
           <h3 class="shares-owned-header"></h3>
         </div>
 
         <div class="daily-trading-volume-container">
-          <h5>Daily Trading Volume</h5>
+          <h5 class="trading-volume-title">Daily Trading Volume</h5>
           <h3 class="trading-volume-display"></h3>
         </div>
         
@@ -80,13 +87,12 @@
         <div class="crypto-container">
             <h2 class="crypto-list-title">Crypto Assets Available</h2>
             <ul class="cards">
-
-
-            </ul>
+            <!-- </ul> -->
         </div>
 
 
 
+        <!-- Selected Watchlist Container -->
         <div class="watchlist-container">
             <h2 class="watchlist-crypto-list-title">Watchlist</h2>
             <ul class="watchlist-cards">
@@ -116,9 +122,6 @@
  
             </ul>
         </div>
-
-
-
 
     </body>
 </html>

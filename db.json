@@ -2883,14 +2883,14 @@
   ],
   "watchlist": [
     {
-      "id": "ripple",
-      "symbol": "xrp",
-      "name": "XRP",
-      "image": "https://assets.coingecko.com/coins/images/44/large/xrp-symbol-white-128.png?1696501442",
-      "current_price": 0.503207,
-      "market_cap": 27357075005,
-      "total_volume": 848930470,
-      "shares_owned": 198.72537544191556
+      "id": "bitcoin",
+      "symbol": "btc",
+      "name": "Bitcoin",
+      "image": "https://assets.coingecko.com/coins/images/1/large/bitcoin.png?1696501400",
+      "current_price": 43066,
+      "market_cap": 844232921347,
+      "total_volume": 14112030733,
+      "shares_owned": 0.011610086843449588
     },
     {
       "id": "ethereum",
@@ -2900,53 +2900,23 @@
       "current_price": 2366.55,
       "market_cap": 284356063353,
       "total_volume": 9492576015,
-      "shares_owned": 0.042255604149500324
-    },
-    {
-      "id": "matic-network",
-      "symbol": "matic",
-      "name": "Polygon",
-      "image": "https://assets.coingecko.com/coins/images/4713/large/polygon.png?1698233745",
-      "current_price": 0.80301,
-      "market_cap": 7444841330,
-      "total_volume": 291421895,
       "shares_owned": 0
     },
     {
-      "id": "the-open-network",
-      "symbol": "ton",
-      "name": "Toncoin",
-      "image": "https://assets.coingecko.com/coins/images/17980/large/ton_symbol.png?1696517498",
-      "current_price": 2.04,
-      "market_cap": 7061619088,
-      "total_volume": 14970759,
-      "shares_owned": 0
-    },
-    {
-      "id": "cosmos",
-      "symbol": "atom",
-      "name": "Cosmos Hub",
-      "image": "https://assets.coingecko.com/coins/images/1481/large/cosmos_hub.png?1696502525",
-      "current_price": 9.36,
-      "market_cap": 3588996500,
-      "total_volume": 140436009,
-      "shares_owned": 0
-    },
-    {
-      "id": "bitcoin-cash",
-      "symbol": "bch",
-      "name": "Bitcoin Cash",
-      "image": "https://assets.coingecko.com/coins/images/780/large/bitcoin-cash-circle.png?1696501932",
-      "current_price": 235.52,
-      "market_cap": 4620008315,
-      "total_volume": 120097535,
-      "shares_owned": 0.2122961956521739
+      "id": "ripple",
+      "symbol": "xrp",
+      "name": "XRP",
+      "image": "https://assets.coingecko.com/coins/images/44/large/xrp-symbol-white-128.png?1696501442",
+      "current_price": 0.503207,
+      "market_cap": 27357075005,
+      "total_volume": 848930470,
+      "shares_owned": 298.08806316287337
     }
   ],
   "wallet": [
     {
       "id": "1",
-      "wallet_amount": 1759.92,
+      "wallet_amount": 1459.92,
       "can_withdraw": true
     }
   ]

@@ -11,6 +11,12 @@ let currentDisplayedTradingVolumeAsset = null;
 
 
 
+// function commas(str) {
+//     return str.replace(/.(?=(?:.{3})+$)/g, '$&,');
+// }
+
+
+
 
 //Wallet Amount - Get Request
 fetch('http://localhost:3000/wallet')
@@ -288,6 +294,9 @@ function rerenderWatchlistData() {
                     const dollarAmountChangeOnSellAll = Number(currentWalletAmount) + (Number(watchlistCoin.current_price) * Number(watchlistCoin.shares_owned));
                     changeTheWalletAmount(Number(dollarAmountChangeOnSellAll.toFixed(2)));
 
+                    //Adding that Sell All will also delete it from the watchlist
+                    deleteFromTheWatchlist(watchlistCoin)
+
                 })
 
 
@@ -430,7 +439,7 @@ function selectingAnAssetToView(coin) {
 function displaySelectedAssetSharesOwned(coinShares) {
 
     const sharesOwnedHeaderElement = document.querySelector('.shares-owned-header');
-    sharesOwnedHeaderElement.textContent = coinShares;
+    sharesOwnedHeaderElement.textContent = coinShares.toFixed(6);
 
 }
 //changing the textContent of the trading volume header
@@ -546,24 +555,6 @@ function buyingSellingSharesOfSelectedAsset(currentSelectAsset, coin) {
             }
 
         }
-
-
-        //Building an onmousehover event listener to show "Sell All Shares"
-        // const sellButtonHoverDiv = document.querySelector('.sell-button-hover-div');
-        // const testButton = document.querySelector('.button-sell');
-
-        // testButton.addEventListener('onmouseover', () => {
-        //     console.log('correct hover');
-
-        //     document.querySelector('.temporary-hovered').textContent = 'Hovered'
-
-        //     const newDivOnHover = document.createElement('div');
-        //     sellButtonHoverDiv.appendChild(newDivOnHover);
-        //     const newSellAllButtonOnHover = document.createElement('button');
-        //     newDivOnHover.appendChild(newSellAllButtonOnHover);
-
-
-        // })
 
 
     })
