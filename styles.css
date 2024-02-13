@@ -12,7 +12,9 @@
 
 .full-body {
     max-width: 100%;
-    background-color: rgb(34, 34, 85);
+    /* background-color: rgb(34, 34, 85); */
+    background: rgb(15, 11, 91);
+    background: linear-gradient(90deg, rgb(9, 4, 106) 0%, rgb(33, 33, 132) 35%, rgb(2, 37, 194) 100%);
 }
 
 
@@ -83,8 +85,8 @@
 
 .main-deposit-form {
     position: relative;
-    left: 580px;
-    top: 20px;
+    left: 620px;
+    top: 60px;
     width: 350px;
     height: 200px;
     /* border-style: solid; */
@@ -128,33 +130,35 @@
 
 .amount-wording-form {
     position: relative;
-    left: 30px;
+    left: 25px;
     top: -8px;
-    font-size: 20px;
+    font-size: 22px;
 }
 
 .amount-symbol-form {
     position: relative;
-    left: 45px;
+    left: 30px;
     top: -8px;
-    font-size: 20px;
+    font-size: 22px;
 }
 
 
 .amount-input-box {
     position: relative;
-    left: 50px;
+    left: 35px;
     top: -10px;
-    height: 27px;
+    height: 30px;
+    font-size: 15px;
+    padding-left: 7px;
 }
 
 
 .confirm-dw-button {
     position: relative;
     left: 100px;
-    top: 5px;
-    height: 30px;
-    width: 150px;
+    top: 10px;
+    height: 40px;
+    width: 160px;
     background-color: #cde2c6;
 }
 
@@ -202,19 +206,6 @@
 
 
 
-/* 
-.deposit-withdraw-div-container {
-    border-color: red;
-    border-style: solid;
-    width: 300px;
-    height: 150px;
-    position: absolute;
-    left: 300px;
-} */
-
-
-
-
 
 
 
@@ -226,7 +217,7 @@
 
 .selected-asset-container {
     position: absolute;
-    left: 1530px;
+    left: 1680px;
     top: 80px;
     /* border: solid; */
     padding: 10px;
@@ -293,7 +284,7 @@
     font-size: 18px;
     position: absolute;
     top: 100px;
-    left: 1100px;
+    left: 1200px;
 }
 
 .button-sell {
@@ -328,7 +319,7 @@
     font-size: 18px;
     position: absolute;
     top: 100px;
-    left: 1320px;
+    left: 1440px;
 }
 
 .button-buy:focus {
@@ -364,16 +355,18 @@
 /* Buy/Sell Input Amount Box__________________________________________________________________________________ */
 .input-buysell {
     position: absolute;
-    left: 1190px;
+    left: 1295px;
     top: 180px;
     height: 50px;
     width: 200px;
+    font-size: 20px;
+    padding-left: 10px;
 }
 
 .dollar-label-buysell {
     position: absolute;
-    left: 1165px;
-    top: 195px;
+    left: 1269px;
+    top: 193px;
     font-size: 30px;
     color: var(--yellow);
 }
@@ -432,7 +425,7 @@ body {
     font: 16px / 24px "Rubik", sans-serif;
     /* color: var(--black);
     background: var(--platinum); */
-    margin: 50px 0;
+    /* margin: 50px 0; */
 }
 
 .crypto-container {
@@ -442,7 +435,7 @@ body {
     margin-left: 50px;
     margin-top: 200px;
     position: absolute;
-    top: 200px;
+    top: 300px;
 }
 
 h2 {
@@ -520,47 +513,7 @@ h2 {
     transition: background 0.2s;
 }
 
-/* .card:hover .card-link {
-    background: var(--darkorange);
-}
 
-.cards::-webkit-scrollbar {
-    height: 12px;
-}
-
-.cards::-webkit-scrollbar-thumb,
-.cards::-webkit-scrollbar-track {
-    border-radius: 92px;
-}
-
-.cards::-webkit-scrollbar-thumb {
-    background: var(--darkorange);
-}
-
-.cards::-webkit-scrollbar-track {
-    background: var(--thumb);
-} */
-
-/* @media (min-width: 500px) {
-    .cards {
-        grid-auto-columns: calc(50% - 10px);
-        grid-column-gap: 20px;
-    }
-}
-
-@media (min-width: 700px) {
-    .cards {
-        grid-auto-columns: calc(calc(100% / 3) - 20px);
-        grid-column-gap: 30px;
-    }
-}
-
-@media (min-width: 1100px) {
-    .cards {
-        grid-auto-columns: calc(25% - 30px);
-        grid-column-gap: 40px;
-    }
-} */
 
 
 
@@ -583,11 +536,11 @@ h2 {
     /* margin: 0 auto; */
     /* margin-left: 5000px;
     margin-top: -15200px; */
-    top: 390px;
-    left: 800px;
-    width: 670px;
+    top: 490px;
+    left: 900px;
+    width: 690px;
     border-style: ridge;
-    height: 615px;
+    height: 670px;
 }
 
 /* h2 {
@@ -611,7 +564,7 @@ h2 {
     overflow-x: hidden;
     overflow-y: auto;
     scroll-snap-type: y mandatory;
-    height: 500px;
+    height: 580px;
 }
 
 .watchlist-card {
@@ -728,8 +681,8 @@ h2 {
 
 .shares-owned-container {
     position: absolute;
-    top: 450px;
-    left: 1500px;
+    top: 600px;
+    left: 1650px;
     color: var(--yellow);
     font-size: 20px;
     /* border-style: solid; */
@@ -740,7 +693,7 @@ h2 {
     margin-left: 10px;
     margin-right: 10px;
     text-align: center;
-    background-color: var(--navyblue);
+    /* background-color: var(--navyblue); */
 }
 
 .shares-owned-title {
@@ -762,8 +715,8 @@ h2 {
 /* Daily Trading Volume Text and Container */
 .daily-trading-volume-container {
     position: absolute;
-    top: 650px;
-    left: 1500px;
+    top: 800px;
+    left: 1645px;
     color: var(--yellow);
     font-size: 20px;
     /* border-style: solid; */
@@ -774,7 +727,7 @@ h2 {
     margin-left: 10px;
     margin-right: 10px;
     text-align: center;
-    background-color: var(--navyblue);
+    /* background-color: var(--navyblue); */
     width: 210px;
     font-size: 20px;
 }

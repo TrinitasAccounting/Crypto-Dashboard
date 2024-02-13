@@ -2893,16 +2893,6 @@
       "shares_owned": 0.011610086843449588
     },
     {
-      "id": "ethereum",
-      "symbol": "eth",
-      "name": "Ethereum",
-      "image": "https://assets.coingecko.com/coins/images/279/large/ethereum.png?1696501628",
-      "current_price": 2366.55,
-      "market_cap": 284356063353,
-      "total_volume": 9492576015,
-      "shares_owned": 0
-    },
-    {
       "id": "ripple",
       "symbol": "xrp",
       "name": "XRP",
@@ -2910,13 +2900,23 @@
       "current_price": 0.503207,
       "market_cap": 27357075005,
       "total_volume": 848930470,
-      "shares_owned": 298.08806316287337
+      "shares_owned": 99.36268772095781
+    },
+    {
+      "id": "avalanche-2",
+      "symbol": "avax",
+      "name": "Avalanche",
+      "image": "https://assets.coingecko.com/coins/images/12559/large/Avalanche_Circle_RedWhite_Trans.png?1696512369",
+      "current_price": 34.39,
+      "market_cap": 12621810228,
+      "total_volume": 344114977,
+      "shares_owned": 29.078220412910728
     }
   ],
   "wallet": [
     {
       "id": "1",
-      "wallet_amount": 1459.92,
+      "wallet_amount": "1759.92",
       "can_withdraw": true
     }
   ]
