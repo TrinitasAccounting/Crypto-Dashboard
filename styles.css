@@ -387,6 +387,9 @@
 .crypto-list-title {
     margin-left: 50px;
     color: var(--yellow);
+    position: absolute;
+    top: 440px;
+    left: 90px;
 
 }
 
@@ -429,13 +432,15 @@ body {
 }
 
 .crypto-container {
-    max-width: 520px;
+    max-width: 620px;
     padding: 0 15px;
     /* margin: 0 auto; */
     margin-left: 50px;
     margin-top: 200px;
     position: absolute;
     top: 300px;
+    overflow: auto;
+    height: 650px;
 }
 
 h2 {
