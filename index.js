@@ -344,7 +344,7 @@ function addingToTheWatchlistDB(coinObj) {
         })
     })
         .then(res => res.json())
-        .then(data => console.log(data))
+        .then(data => data)
 };
 
 
@@ -358,7 +358,7 @@ function deleteFromTheWatchlist(coinObj) {
         }
     })
         .then(res => res.json())
-        .then(data => console.log(data))
+        .then(data => data)
 };
 
 
@@ -478,7 +478,7 @@ function buyingSellingSharesOfSelectedAsset(currentSelectAsset, coin) {
 
         //Calculating the share to dollar amount conversion rate for BUY BUY
         const newSharesBoughtToDollarsSpentRatio = Number(inputBuySellSharesValue) / Number(coin.current_price);
-        console.log(currentSelectAsset.current_price);
+        // console.log(currentSelectAsset.current_price);
 
         const newSharesOwnedTotalValueForBuy = Number(newSharesBoughtToDollarsSpentRatio) + Number(currentSelectedAssetSharesOwned);
 
