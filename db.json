@@ -2883,16 +2883,6 @@
   ],
   "watchlist": [
     {
-      "id": "ethereum",
-      "symbol": "eth",
-      "name": "Ethereum",
-      "image": "https://assets.coingecko.com/coins/images/279/large/ethereum.png?1696501628",
-      "current_price": 2366.55,
-      "market_cap": 284356063353,
-      "total_volume": 9492576015,
-      "shares_owned": 0
-    },
-    {
       "id": "avalanche-2",
       "symbol": "avax",
       "name": "Avalanche",
@@ -2900,13 +2890,33 @@
       "current_price": 34.39,
       "market_cap": 12621810228,
       "total_volume": 344114977,
+      "shares_owned": 2.180866530968305
+    },
+    {
+      "id": "chainlink",
+      "symbol": "link",
+      "name": "Chainlink",
+      "image": "https://assets.coingecko.com/coins/images/877/large/chainlink-new-logo.png?1696502009",
+      "current_price": 18.3,
+      "market_cap": 10740381952,
+      "total_volume": 651835677,
       "shares_owned": 0
+    },
+    {
+      "id": "shiba-inu",
+      "symbol": "shib",
+      "name": "Shiba Inu",
+      "image": "https://assets.coingecko.com/coins/images/11939/large/shiba.png?1696511800",
+      "current_price": 0.0000089,
+      "market_cap": 5239180491,
+      "total_volume": 79959129,
+      "shares_owned": 5617977.528089888
     }
   ],
   "wallet": [
     {
       "id": "1",
-      "wallet_amount": 3309.92,
+      "wallet_amount": 2184.92,
       "can_withdraw": true
     }
   ]

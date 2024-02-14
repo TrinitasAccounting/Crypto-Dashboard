@@ -11,10 +11,6 @@ let currentDisplayedTradingVolumeAsset = null;
 
 
 
-// function commas(str) {
-//     return str.replace(/.(?=(?:.{3})+$)/g, '$&,');
-// }
-
 
 
 
@@ -86,8 +82,6 @@ function changeTheWalletAmount(dollarAmount) {
         )
     })
 };
-
-
 
 
 
@@ -168,9 +162,6 @@ fetch('http://localhost:3000/crypto')
 
 
 
-
-
-
 //Creating the watchlist POST and DELETE _______________________________________________________________________________
 //______________________________________________________________________________________________________________________
 
@@ -228,6 +219,7 @@ function rerenderWatchlistData() {
                         alert('Due to financial regulations, any asset in which you own shares.\nThese owned assets cannot be removed from the watchlist.\nPlease sell all shares and try again!')
                     }
                 })
+
 
 
                 //Appending headers to the div element_________________
@@ -410,6 +402,7 @@ function selectingAnAssetToView(coin) {
     currentSelectedAssetFullCoin = coin;
     currentSelectedAssetSharesOwned = coin.shares_owned;
     currentDisplayedTradingVolumeAsset = coin.total_volume;
+
 
 
     //this is giving the BUY and SELL shares buttons there functionality because the currentSelectedAsset is losing its value everytime due to rerending
