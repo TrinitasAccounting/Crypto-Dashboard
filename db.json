@@ -2883,13 +2883,13 @@
   ],
   "watchlist": [
     {
-      "id": "ethereum",
-      "symbol": "eth",
-      "name": "Ethereum",
-      "image": "https://assets.coingecko.com/coins/images/279/large/ethereum.png?1696501628",
-      "current_price": 2366.55,
-      "market_cap": 284356063353,
-      "total_volume": 9492576015,
+      "id": "tether",
+      "symbol": "usdt",
+      "name": "Tether",
+      "image": "https://assets.coingecko.com/coins/images/325/large/Tether.png?1696501661",
+      "current_price": 1,
+      "market_cap": 96191276240,
+      "total_volume": 26902607370,
       "shares_owned": 0
     },
     {
@@ -2901,12 +2901,32 @@
       "market_cap": 46675753905,
       "total_volume": 450657116,
       "shares_owned": 0
+    },
+    {
+      "id": "avalanche-2",
+      "symbol": "avax",
+      "name": "Avalanche",
+      "image": "https://assets.coingecko.com/coins/images/12559/large/Avalanche_Circle_RedWhite_Trans.png?1696512369",
+      "current_price": 34.39,
+      "market_cap": 12621810228,
+      "total_volume": 344114977,
+      "shares_owned": 0
+    },
+    {
+      "id": "bitcoin",
+      "symbol": "btc",
+      "name": "Bitcoin",
+      "image": "https://assets.coingecko.com/coins/images/1/large/bitcoin.png?1696501400",
+      "current_price": 43066,
+      "market_cap": 844232921347,
+      "total_volume": 14112030733,
+      "shares_owned": 0.32935906725512154
     }
   ],
   "wallet": [
     {
       "id": "1",
-      "wallet_amount": 2459.92,
+      "wallet_amount": 1100,
       "can_withdraw": true
     }
   ]
